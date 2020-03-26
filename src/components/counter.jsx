@@ -19,6 +19,13 @@ class Counter extends Component {
                     Increment
                 </button>
                 <button
+                    onClick={()=> this.props.onDecrement(counter)}
+                    className='btn btn-secondary btn-sm m-2'
+                    disabled={this.checkCounter(counter)}
+                >
+                    Decrement
+                </button>
+                <button
                     onClick={() => this.props.onDelete(counter)}
                     className='btn btn-outline-danger btn-sm m-2'
                 >
@@ -27,6 +34,10 @@ class Counter extends Component {
             </div>
         )
     }
+
+    checkCounter = counter => {
+        return (counter.value === 0) ? true: false;
+    };
 
     getBadgeClasses = counter => {
         let classes = 'badge m-2 badge-';
